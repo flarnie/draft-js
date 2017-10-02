@@ -9,10 +9,10 @@ permalink: docs/quickstart-serialization.html
 
 # Serialization
 
-Because a text editor doesn't exist in a vacuum and it's important to save 
-contents for storage or transmission, you will want to be able to convert 
-`ContentState` into a plain JS object, and vice versa. For storing it in a database,
-it may be easiest to store it in a string field as json.
+Because a text editor doesn't exist in a vacuum and it's important to save
+contents for storage or transmission, you will want to be able
+[to convert `ContentState` into a plain JS object, and vice versa](/docs/api-reference-data-conversion.html#content).
+For storing it in a database, it may be easiest to store it in a string field as json.
 
 ```js
 import {Editor, EditorState, convertToRaw} from 'draft-js';
