@@ -42,25 +42,34 @@ class MyEditor extends React.Component {
 ```
 
 
-You can then load it back into an `EditorState`.
+You can then load the contents back into an `EditorState`.
 
 ```js
-var editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(raw)));
+var editorState =
+  EditorState.createWithContent(convertFromRaw(JSON.parse(raw)));
 ```
 
-To display this elsewhere in your site, you can create an Editor component with
+To display the contents statically, you can create an Editor component with
 the `readOnly` prop set to `true`.
 
 ```js
 <Editor editorState={editorState} readOnly />
 ```
 
-## Why not HTML?
+## Why not HTML or markdown?
+
+At Facebook, we do not use HTML or markdown to store rich text contents.
+This allows us to avoid storing style information or metadata within the
+raw text contents of the stored state.
+
+This in turn enables us to render styles and metadata anywhere -- on
+native platforms, for instance -- without needing to parse from HTML
+or markdown.
 
 The editor content is a rich object that contains the "what" and not the "how" for the content.
 This allows you to change the rendering after the data is submitted by the user, and to include
 interactive widgets in the display.
 
-Since it's not HTML, you can in theory create a native editor and display on non-web platforms, such
-as iOS.
-
+In addition, by using JavaScript objects and not HTML to represent our
+editor, it would be possible to build or display `Editor` components on
+non-web platforms.
